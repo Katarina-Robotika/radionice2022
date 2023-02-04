@@ -118,6 +118,7 @@ public:
   void pratiZid();
   void pratiLiniju();
   void pratiLinijuBrzo();
+  void zaobidiNeprijatelja();
   
   /** Arm will go to ball-catch ready position.
   */
