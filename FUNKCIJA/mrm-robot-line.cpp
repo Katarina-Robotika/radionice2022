@@ -1488,3 +1488,9 @@ void RobotLine::pratiLinijuBrzo(){
    
 }
 
+void RobotLine::zaobidiNeprijatelja(){
+  pratiLiniju();
+  }
+  
+
+
