@@ -3,9 +3,5 @@
 
 
 void RobotLine::radionica(){
-  pratiZid();
-  if(lineAny()){
-    stop();
-    end();
-  }
+pratiLinijuBrzo();
 }
