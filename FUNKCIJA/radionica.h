@@ -1,7 +1,11 @@
-#pragma once
-#include "helper.h"
+ #pragma once
+ #include "helper.h"
 
 
-void RobotLine::radionica() {
-pratiZid();
+void RobotLine::radionica(){
+  pratiZid();
+  if(lineAny()){
+    stop();
+    end();
+  }
 }
