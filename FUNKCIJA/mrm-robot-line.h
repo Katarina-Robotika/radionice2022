@@ -116,6 +116,8 @@ public:
   void followFrontLeft();
 
   void pratiZid();
+  void pratiLiniju();
+  void pratiLinijuBrzo();
   
   /** Arm will go to ball-catch ready position.
   */
