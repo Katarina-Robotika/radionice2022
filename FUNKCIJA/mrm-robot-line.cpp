@@ -1,4 +1,4 @@
-#include <mrm-8x8a.h>
+ #include <mrm-8x8a.h>
 #include <mrm-col-can.h>
 #include <mrm-fet-can.h>
 #include <mrm-imu.h>
@@ -114,7 +114,7 @@ void RobotLine::armCarry() {
 }
 
 void RobotLine::armOpen() {
-  servo(140, 0);      // Range from 130 - 160
+  servo(150, 0);      // Range from 130 - 160
   servo(80, 1);       // Range from 0 - 90
   servo(10, 2);       // Range from 90 - 0}
 }
@@ -1399,7 +1399,8 @@ void RobotLine::followFrontRight() {
 }
 
 void RobotLine::followFrontLeft() {
-  armOpen();
+  if(setup()){
+  armOpen();}
   if (leftFront() > 100)
     go(30, 70);
   else
@@ -1407,90 +1408,125 @@ void RobotLine::followFrontLeft() {
 }
 
 void RobotLine::pratiZid() {
-static bool lijevo=false;
+  static bool lijevo = false;
 
-  if (front() < 150 and lijevo==true) {
+  if (front() < 150 and lijevo == true) {
     go(70, -70);
     delayMs(500);
   }
 
-  if (front() < 150 and lijevo==false) {
+  if (front() < 150 and lijevo == false) {
     go(-70, 70);
     delayMs(500);
   }
 
   if (frontLeft() < frontRight()) {
-    lijevo=true;
+    lijevo = true;
     followFrontLeft();
 
 
   }
   else if (frontRight() < frontLeft()) {
-    lijevo=false;
+    lijevo = false;
     followFrontRight();
-    
+
   }
 
 
 }
 
-void RobotLine::pratiLiniju(){
- if (line(8))
-     go(-90, 90);
-   else if (line(0))
+void RobotLine::pratiLiniju() {
+  if (line(8))
+    go(-90, 90);
+  else if (line(0))
     go(90, -90);
-   else if (line(7))
+  else if (line(7))
     go(0, 100);
-   else if (line(1))
+  else if (line(1))
     go(100, 0);
-   else if (line(6))
+  else if (line(6))
     go(30, 80);
-   else if (line(2))
+  else if (line(2))
     go(80, 30);
-   else if (line(5))
+  else if (line(5))
     go(40, 70);
-   else if (line(3))
+  else if (line(3))
     go(70, 40);
-   else if (line(4))
+  else if (line(4))
     go(70, 70);
-   else
+  else
     go(70, 70);
-   
-   
+
+
 }
 
-void RobotLine::pratiLinijuBrzo(){
+void RobotLine::pratiLinijuBrzo() {
   if (line(0) && line(8)) {
     go(50, 50);
-    delayMs(200);}
-    
- if (line(8))
-     go(-100, 100);
-   else if (line(0))
+    delayMs(200);
+  }
+
+  if (line(8))
+    go(-100, 100);
+  else if (line(0))
     go(100, -100);
-   else if (line(7))
+  else if (line(7))
     go(0, 100);
-   else if (line(1))
+  else if (line(1))
     go(100, 0);
-   else if (line(6))
+  else if (line(6))
     go(50, 100);
-   else if (line(2))
+  else if (line(2))
     go(100, 50);
-   else if (line(5))
+  else if (line(5))
     go(100, 70);
-   else if (line(3))
+  else if (line(3))
     go(100, 70);
-   else if (line(4))
+  else if (line(4))
     go(100, 100);
-   else
+  else
     go(100, 100);
-   
-   
+
+
 }
 
-void RobotLine::zaobidiNeprijatelja(){
+void RobotLine::zaobidiNeprijatelja() {
   pratiLiniju();
+
+  if (front()< 120) {
+    go(50, (-50));
+    delayMs(600);
+    go(50, 50);
+    delayMs(1000);
+    go((-50), 50);
+    delayMs(600);
+    go(50, 50);
+    delayMs(1500);
+    go((-50), 50);
+    delayMs(600);
+    go(50, 50);
+    delayMs(1000);
+    go(50, (-50));
+    delayMs(600);
   }
+}
+
+void RobotLine:: uhvatiBombu() {
+  followFrontLeft();
+  if (frontRight()< 120) {
+    go(90, -90);
+    delayMs(300);
+    go(30, 30);
+    delayMs(1200);
+    armCatch();
+    go(-30, -30);
+    delayMs(1200);
+    stop();
+    end();
   
+  }
+}
+
+
 
 
