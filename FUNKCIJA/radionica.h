@@ -1,7 +1,7 @@
- #pragma once
+  #pragma once
  #include "helper.h"
 
 
 void RobotLine::radionica(){
-zaobidiNeprijatelja();
+uhvatiBombu();
 }
